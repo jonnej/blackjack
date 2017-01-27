@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import blackjack.data.Player;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +17,7 @@ import static org.junit.Assert.*;
  * @author joju
  */
 public class PlayerTest {
-    
+    Player p;
     public PlayerTest() {
     }
     
@@ -30,15 +31,24 @@ public class PlayerTest {
     
     @Before
     public void setUp() {
+        p = new Player("Jonne", 100);
+        
     }
     
     @After
     public void tearDown() {
     }
+    
+    
+    
+    @Test
+    public void getCardValueTotalWorks() {
+        assertEquals(p.getCardValueTotal(),0);
+    }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void addToSumWorks() {
+        p.addToSum(10);
+        assertEquals(p.getCardValueTotal(),10);
+    }
 }
