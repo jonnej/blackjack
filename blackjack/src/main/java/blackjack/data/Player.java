@@ -8,10 +8,12 @@ package blackjack.data;
 public class Player {
     private String name;
     private double money;
+    private int sum;
     
     public Player(String name, double money) {
         this.name = name;
         this.money = money;
+        this.sum = 0;
     }
 
     public String getName() {
@@ -20,6 +22,14 @@ public class Player {
 
     public double getMoney() {
         return money;
+    }
+    
+    public int getSum() {
+        return sum;
+    }
+    
+    public void addToSum(int i) {
+        sum += i;
     }
 
     public void setName(String name) {

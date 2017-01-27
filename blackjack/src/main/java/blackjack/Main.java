@@ -6,6 +6,7 @@
 package blackjack;
 
 import blackjack.data.*;
+import java.util.Collections;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Deck deck = new Deck();
         deck.createDeck();
+        deck.shuffleDeck();
         deck.printDeck();
     }
     

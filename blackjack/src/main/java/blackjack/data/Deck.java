@@ -35,19 +35,30 @@ public class Deck {
             }
             for (int j = 2; j < 15; j++) {
                 if (j < 11) {
-                    deck.add(new Card("" + j, suit));
+                    deck.add(new Card("" + j, suit, j));
                 } else if (j == 11) {
-                    deck.add(new Card("J", suit));
+                    deck.add(new Card("J", suit, j));
                 } else if (j == 12) {
-                    deck.add(new Card("Q", suit));
+                    deck.add(new Card("Q", suit, j));
                 } else if (j == 13) {
-                    deck.add(new Card("K", suit));
+                    deck.add(new Card("K", suit, j));
                 } else {
-                    deck.add(new Card("A", suit));
+                    deck.add(new Card("A", suit, j));
                 }
 
             }
         }
+    }
+    
+    public Card getTopCard(int i ) {
+        return deck.get(i);
+    }
+    
+    public void shuffleDeck() {
+        Collections.shuffle(deck);
+    }
+    public List getDeck() {
+        return deck;
     }
     
     public void printDeck() {
