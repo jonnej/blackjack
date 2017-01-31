@@ -10,22 +10,22 @@ package blackjack.data;
  * @author joju
  */
 public class Casino {
-    private int sum;
+    private int handValue;
     
     public Casino() {
-        this.sum = 0;
+        this.handValue = 0;
     }
     
-    public int getSum() {
-        return sum;
+    public int getHandValue() {
+        return handValue;
     }
     
-    public void setSumZero() {
-        this.sum = 0;
+    public void setHandValueZero() {
+        this.handValue = 0;
     }
     
-    public void addToSum(int i) {
-        sum += i;
+    public void addToHandValue(int i) {
+        handValue += i;
     }
     
     

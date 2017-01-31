@@ -37,6 +37,10 @@ public class Player {
     public int getHandValue() {
         return handValue;
     }
+    
+    public void setHandValueZero() {
+        handValue = 0;
+    }
 
     public void addToHandValue(Card card) {
         handValue += card.getValue();

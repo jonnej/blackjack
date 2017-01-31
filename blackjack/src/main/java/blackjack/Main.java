@@ -6,6 +6,7 @@
 package blackjack;
 
 import blackjack.data.*;
+import blackjack.logiikka.*;
 import java.util.Collections;
 
 /**
@@ -18,10 +19,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Deck deck = new Deck();
-        deck.createDeck();
-        deck.shuffleDeck();
-        deck.printDeck();
+       Dealer dealer = new Dealer("jonne");
+       dealer.shuffleDeck();
+       dealer.getDeck();
     }
     
 }

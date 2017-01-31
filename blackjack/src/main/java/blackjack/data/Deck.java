@@ -54,9 +54,6 @@ public class Deck {
         return deck.get(i);
     }
     
-    public void shuffleDeck() {
-        Collections.shuffle(deck);
-    }
     public List getDeck() {
         return deck;
     }
@@ -66,5 +63,7 @@ public class Deck {
             System.out.println(c);
         }
     }
+    
+    
 
 }
