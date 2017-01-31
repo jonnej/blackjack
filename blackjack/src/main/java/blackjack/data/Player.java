@@ -28,12 +28,10 @@ public class Player {
     }
 
     public void removeMoney(int betAmount) {
-        if (betAmount < 0) {
+        if (betAmount < 0 || money < betAmount) {
             return;
         }
-        if (money >= betAmount) {
-            money -= betAmount;
-        }
+        money -= betAmount;
     }
 
     public int getHandValue() {

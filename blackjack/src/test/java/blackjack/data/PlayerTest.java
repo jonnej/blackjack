@@ -95,8 +95,14 @@ public class PlayerTest {
     }
     
     @Test
-    public void removeMoneyWorksWhenNotEnoughMoney() {
+    public void removeMoneyWorksWithPositiveIntegerWhenNotEnoughMoney() {
         p.removeMoney(20);
+        assertEquals((double) 15, p.getMoney(), 0.01);
+    }
+    
+     @Test
+    public void removeMoneyWorksWithNegativeIntegerWhenNotEnoughMoney() {
+        p.removeMoney(-20);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
 }

@@ -10,4 +10,4 @@ pelipaikkoja.
 Rakenne
 -------
 
-![Määrittelyvaiheen luokkakaavio](blackjack/dokumentaatio/kuvat/maarLuok.png)
+![Määrittelyvaiheen luokkakaavio](kuvat/maarLuok.png)
