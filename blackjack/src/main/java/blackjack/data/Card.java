@@ -17,6 +17,7 @@ public class Card {
     public Card(String name, String suit, int value) {
         this.name = name;
         this.suit = suit;
+        this.value = value;
     }
 
     public String getName() {
@@ -25,6 +26,10 @@ public class Card {
 
     public String getSuit() {
         return suit;
+    }
+    
+    public int getValue() {
+        return value;
     }
 
     @Override

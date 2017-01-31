@@ -37,20 +37,20 @@ public class Deck {
                 if (j < 11) {
                     deck.add(new Card("" + j, suit, j));
                 } else if (j == 11) {
-                    deck.add(new Card("J", suit, j));
+                    deck.add(new Card("J", suit, 10));
                 } else if (j == 12) {
-                    deck.add(new Card("Q", suit, j));
+                    deck.add(new Card("Q", suit, 10));
                 } else if (j == 13) {
-                    deck.add(new Card("K", suit, j));
+                    deck.add(new Card("K", suit, 10));
                 } else {
-                    deck.add(new Card("A", suit, j));
+                    deck.add(new Card("A", suit, 11));
                 }
 
             }
         }
     }
     
-    public Card getTopCard(int i ) {
+    public Card getTopCard(int i) {
         return deck.get(i);
     }
     

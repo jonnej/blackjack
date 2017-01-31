@@ -20,6 +20,10 @@ public class Casino {
         return sum;
     }
     
+    public void setSumZero() {
+        this.sum = 0;
+    }
+    
     public void addToSum(int i) {
         sum += i;
     }

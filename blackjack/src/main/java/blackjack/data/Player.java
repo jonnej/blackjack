@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package blackjack.data;
 
 public class Player {
+
     private String name;
     private double money;
-    private int cardValueTotal;
-    
+    private int handValue;
+
     public Player(String name, double money) {
         this.name = name;
         this.money = money;
-        this.cardValueTotal = 0;
+        this.handValue = 0;
     }
 
     public String getName() {
@@ -23,13 +19,29 @@ public class Player {
     public double getMoney() {
         return money;
     }
-    
-    public int getCardValueTotal() {
-        return cardValueTotal;
+
+    public void addMoney(int winAmount) {
+        if (winAmount < 0) {
+            return;
+        }
+        money += winAmount;
     }
-    
-    public void addToSum(int i) {
-        cardValueTotal += i;
+
+    public void removeMoney(int betAmount) {
+        if (betAmount < 0) {
+            return;
+        }
+        if (money >= betAmount) {
+            money -= betAmount;
+        }
+    }
+
+    public int getHandValue() {
+        return handValue;
+    }
+
+    public void addToHandValue(Card card) {
+        handValue += card.getValue();
     }
 
     public void setName(String name) {
@@ -39,12 +51,10 @@ public class Player {
     public void setMoney(double money) {
         this.money = money;
     }
-    
 
     @Override
     public String toString() {
         return this.name + ", rahaa " + this.money;
     }
-    
-    
+
 }
