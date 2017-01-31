@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package blackjack.data;
 
-import blackjack.data.Card;
-import blackjack.data.Player;
+
+
+import blackjack.data.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,20 +41,17 @@ public class PlayerTest {
 
     @Test
     public void constructorSetsNameRight() {
-        Player player = new Player("Jone", 15);
-        assertEquals("Jone", player.getName());
+        assertEquals("Jonne", p.getName());
     }
 
     @Test
     public void constructorSetsMoneyRight() {
-        Player player = new Player("Jone", 15);
-        assertEquals((double) 15, player.getMoney(), 0.01);
+        assertEquals((double) 15, p.getMoney(), 0.01);
     }
 
     @Test
-    public void constructorSetsHandValueRight() {
-        Player player = new Player("Jone", 15);
-        assertEquals(0, player.getHandValue());
+    public void constructorSetsHandValueRight() {       
+        assertEquals(0, p.getHandValue());
     }
 
     @Test
