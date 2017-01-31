@@ -5,14 +5,36 @@
  */
 package blackjack.logiikka;
 
-/**
- *
- * @author joju
- */
+import blackjack.data.*;
+import java.util.*;
+
 public class Betting {
-    
-    
+
+    private int bet;
+
     public Betting() {
-        
+        this.bet = 0;
     }
+
+    public int getBet() {
+        return this.bet;
+    }
+
+    public void setBet(int b) {
+        this.bet = b;
+    }
+    
+    public void betOneMore() {
+        bet += 1;
+    }
+    
+    public void betOneLess() {
+        if (bet == 0) {
+            return;
+        }
+        bet -= 1;
+    }
+    
+    
+
 }

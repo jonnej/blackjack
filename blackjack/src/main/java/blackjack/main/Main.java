@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blackjack;
+package blackjack.main;
 
 import blackjack.data.*;
 import blackjack.logiikka.*;
+import blackjack.ui.*;
 import java.util.Collections;
 
 /**
@@ -19,9 +20,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Dealer dealer = new Dealer("jonne");
-       dealer.shuffleDeck();
-       dealer.getDeck();
+       TextUi ui = new TextUi();
+       ui.start();
     }
     
 }
