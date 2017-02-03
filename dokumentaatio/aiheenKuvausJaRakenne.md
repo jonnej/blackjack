@@ -10,4 +10,4 @@ pelipaikkoja.
 Rakenne
 -------
 
-![Määrittelyvaiheen luokkakaavio](kuvat/maarLuok.png)
+![Määrittelyvaiheen luokkakaavio](kuvat/classdiagram.png)

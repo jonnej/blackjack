@@ -11,35 +11,54 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.*;
+import blackjack.data.*;
 
 /**
  *
  * @author joju
  */
 public class DealerTest {
-    
+
+    private Dealer d;
+
     public DealerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        d = new Dealer("Jonne");
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void constructorSetNameWorks() {
+        assertEquals("Jonne", d.getName());
+    }
+    
+    
+    // testing that deck has 52 different cards
+    @Test
+    public void constructorCreatingDeck() {
+        List<Card> list = d.getDeck().getDeckList();
+        Set<Integer> set = new HashSet(list);
+        assertEquals(list.size(), set.size());
+    }
+    
+    @Test
+    public void dealCardWorks() {
+        
+    }
+
 }

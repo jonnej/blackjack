@@ -20,8 +20,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       TextUi ui = new TextUi();
-       ui.start();
+//       TextUi ui = new TextUi();
+//       ui.start();
+        Dealer d = new Dealer("Jonne");
+        d.printDealersDeck();
     }
     
 }

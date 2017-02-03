@@ -25,12 +25,13 @@ public class Dealer {
     }
 
     public Card dealCard(int i) {
-        return deck.getTopCard(i);
+        return deck.getCard(i);
 
     }
 
     public void shuffleDeck() {
-        Collections.shuffle(deck.getDeck());
+        Collections.shuffle(deck.getDeckList());
+        
     }
 
     public void printDealersDeck() {

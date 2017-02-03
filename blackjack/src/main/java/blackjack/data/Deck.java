@@ -18,11 +18,10 @@ public class Deck {
     public Deck() {
         this.deck = new ArrayList<>();
     }
-    
+
 //    public void addCardtoDeck(Card card) {
 //        this.deck.add(card);
 //    }
-
     public void createDeck() {
         String suit = "spades";
         for (int i = 1; i < 5; i++) {
@@ -49,21 +48,19 @@ public class Deck {
             }
         }
     }
-    
-    public Card getTopCard(int i) {
+
+    public Card getCard(int i) {
         return deck.get(i);
     }
-    
-    public List getDeck() {
+
+    public List getDeckList() {
         return deck;
     }
-    
+
     public void printDeck() {
         for (Card c : deck) {
             System.out.println(c);
         }
     }
-    
-    
 
 }

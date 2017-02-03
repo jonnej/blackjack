@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author joju
  */
 public class DeckTest {
-    
+    private Deck deck;
     public DeckTest() {
     }
     
@@ -32,15 +32,21 @@ public class DeckTest {
     
     @Before
     public void setUp() {
+        deck = new Deck();
+        deck.createDeck();
     }
     
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+//    @Test
+//    public void createDeckWorks() {
+//        
+//    }
+    
+//    @Test
+//    public void getCardWorks() {
+//        
+//    }
 }
