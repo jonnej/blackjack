@@ -6,3 +6,4 @@ Päivä | Tunnit | Kuvaus
 27.01.2017 | 7.0h | Koodin luontia, dokumentointia ja erroreita
 31.01.2017 | 6.5h | Kirjoitettiin testejä, luotiin lisää logiikkaa ja luotiin tekstikäyttöliittymä
 03.02.2017 | 4.0h | Vähän koodia ja testiä
+08.02.2017 | 4.5h | GUI-luokkien tekoa
