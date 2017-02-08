@@ -1,4 +1,4 @@
-package blackjack.ui;
+package blackjack.logiikka;
 
 import blackjack.data.*;
 import blackjack.logiikka.*;

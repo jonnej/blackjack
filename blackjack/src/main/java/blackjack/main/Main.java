@@ -5,6 +5,7 @@
  */
 package blackjack.main;
 
+import blackjack.logiikka.UiCommands;
 import blackjack.data.*;
 import blackjack.logiikka.*;
 import blackjack.ui.*;
