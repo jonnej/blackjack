@@ -29,9 +29,10 @@ public class Dealer {
 
     }
 
-    public void shuffleDeck() {
+    public void shuffleDeckNTimes(int n) {
+        for (int i = 0; i < n; i++) {
         Collections.shuffle(deck.getDeckList());
-        
+        }
     }
 
     public void printDealersDeck() {

@@ -22,8 +22,9 @@ public class Main {
     public static void main(String[] args) {
 //       TextUi ui = new TextUi();
 //       ui.start();
-        Dealer d = new Dealer("Jonne");
-        d.printDealersDeck();
+        UiCommands ui = new UiCommands();
+        ui.startGame();
+        
     }
     
 }
