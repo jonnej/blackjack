@@ -21,20 +21,22 @@ public class Betting {
     }
 
     public void setBet(int b) {
-        this.bet = b;
+        if (b <= 0) {
+            this.bet = 0;
+        } else {
+            this.bet = b;
+        }
     }
-    
+
     public void betOneMore() {
         bet += 1;
     }
-    
+
     public void betOneLess() {
         if (bet == 0) {
             return;
         }
         bet -= 1;
     }
-    
-    
 
 }

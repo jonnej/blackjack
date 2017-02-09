@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BettingTest {
-    
+    private Betting bet;
     public BettingTest() {
     }
     
@@ -23,15 +23,40 @@ public class BettingTest {
     
     @Before
     public void setUp() {
+        this.bet = new Betting();
     }
     
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void constructorWorks() {
+        assertEquals(0, bet.getBet());
+    }
+    
+    @Test
+    public void setBetWorks() {
+        bet.setBet(5);
+        assertEquals(5, bet.getBet());
+    }
+    
+    @Test
+    public void betOneMoreWorks() {
+        bet.betOneMore();
+        assertEquals(1, bet.getBet());
+    }
+    
+    @Test
+    public void betOneLessWorks() {
+        bet.setBet(5);
+        bet.betOneLess();
+        assertEquals(4, bet.getBet());
+    }
+    
+    @Test
+    public void betOneLessWorksWhenBetIsZero() {
+        bet.betOneLess();
+        assertEquals(0, bet.getBet());
+    }
 }

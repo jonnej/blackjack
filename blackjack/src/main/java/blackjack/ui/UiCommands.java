@@ -1,7 +1,9 @@
-package blackjack.logiikka;
+package blackjack.ui;
 
 import blackjack.data.*;
 import blackjack.logiikka.*;
+import blackjack.logiikka.Betting;
+import blackjack.logiikka.Dealer;
 import java.util.*;
 
 
