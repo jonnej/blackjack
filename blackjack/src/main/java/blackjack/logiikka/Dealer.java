@@ -15,13 +15,22 @@ public class Dealer {
     public Dealer(String name) {
         this.name = name;
         this.deck = new Deck();
-        deck.createDeck();
+        
     }
     public Deck getDeck() {
         return deck;
     }
     public String getName() {
         return name;
+    }
+    
+    // Adds cards to deck. Calling multiple times will make deck bigger and having duplicate cards of each kind
+    public void createDeck() {
+        deck.createDeck();
+    }
+    
+    public int deckSize() {
+        return deck.getDeckList().size();
     }
 
     public Card dealCard(int i) {

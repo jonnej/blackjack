@@ -1,7 +1,5 @@
 package blackjack.data;
 
-
-
 import blackjack.data.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -50,23 +48,37 @@ public class PlayerTest {
     }
 
     @Test
-    public void constructorSetsHandValueRight() {       
+    public void constructorSetsHandValueRight() {
         assertEquals(0, p.getHandValue());
     }
-
+    
     @Test
-    public void addToHandValueWorks() {
+    public void setNameWorks() {
+        p.setName("Janne");
+        assertEquals("Janne", p.getName());
+    }
+    
+    @Test
+    public void setMoneyWorks() {
+        p.setMoney(20);
+        assertEquals((double) 20, p.getMoney(), 0.01);
+    }
+  
+    @Test
+    public void addCardWorks() {
         Card c = new Card("9", "clubs", 9);
-        p.addToHandValue(c);
+        p.addCard(c);
         assertEquals(9, p.getHandValue());
+        assertEquals(1, p.getDealtCards().size());
+        
     }
 
     @Test
     public void getCardValueTotalWorks() {
         Card c1 = new Card("9", "clubs", 9);
-        p.addToHandValue(c1);
+        p.addCard(c1);
         Card c2 = new Card("5", "clubs", 5);
-        p.addToHandValue(c2);
+        p.addCard(c2);
         assertEquals(14, p.getHandValue());
     }
 
@@ -75,13 +87,19 @@ public class PlayerTest {
         p.addMoney(5);
         assertEquals((double) 20, p.getMoney(), 0.01);
     }
+    
+    @Test
+    public void addMoneyWorksWithZero() {
+        p.addMoney(0);
+        assertEquals((double) 15, p.getMoney(), 0.01);
+    }
 
     @Test
     public void addMoneyWorksWithNegativeInteger() {
         p.addMoney(-5);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
-    
+
     @Test
     public void removeMoneyWorksWithPositiveInteger() {
         p.removeMoney(5);
@@ -89,20 +107,40 @@ public class PlayerTest {
     }
     
     @Test
+    public void removeMoneyWorksWithZero() {
+        p.removeMoney(0);
+        assertEquals((double) 15, p.getMoney(), 0.01);
+    }
+
+    @Test
     public void removeMoneyWorksWithNegativeInteger() {
         p.removeMoney(-5);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
-    
+
     @Test
     public void removeMoneyWorksWithPositiveIntegerWhenNotEnoughMoney() {
         p.removeMoney(20);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
-    
-     @Test
+
+    @Test
     public void removeMoneyWorksWithNegativeIntegerWhenNotEnoughMoney() {
         p.removeMoney(-20);
         assertEquals((double) 15, p.getMoney(), 0.01);
+    }
+    
+    @Test
+    public void clearDealtCardsAndHandValueToZeroWorks() {
+        Card c = new Card("9", "clubs", 9);
+        p.addCard(c);
+        p.clearDealtCardsAndHandValueToZero();
+        assertEquals(0, p.getHandValue());
+        assertEquals(0, p.getDealtCards().size());
+    }
+    
+    @Test
+    public void toStringWorks() {
+        assertEquals("Jonne, rahaa 15.0", "" + p);
     }
 }

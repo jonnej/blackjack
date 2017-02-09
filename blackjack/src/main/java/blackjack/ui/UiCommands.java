@@ -29,7 +29,7 @@ public class UiCommands {
         System.out.println("Antakaa aloitusmerkkimäärä (kokonaisluku): ");
         int rahaa = Integer.parseInt(lukija.nextLine());
         player = new Player(name, rahaa);
-        casino = new Player("casino", 10000);
+        casino = new Player("casino", 1000);
         betting = new Betting();
         dealer = new Dealer("Jonne");
 
@@ -75,6 +75,7 @@ public class UiCommands {
         System.out.println("Jako alkaa!");
         int i = 0;
         player.removeMoney(betting.getBet());
+        dealer.createDeck();
         dealer.shuffleDeckNTimes(3);
 
         player.addCard(dealer.dealCard(i));

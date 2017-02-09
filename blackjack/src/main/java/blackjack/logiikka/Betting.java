@@ -21,10 +21,10 @@ public class Betting {
     }
 
     public void setBet(int b) {
-        if (b <= 0) {
-            this.bet = 0;
+        if (b > 0) {
+            bet = b;
         } else {
-            this.bet = b;
+            bet = 0;
         }
     }
 

@@ -32,8 +32,10 @@ public class Deck {
             } else if (i == 4) {
                 suit = "hearts";
             }
-            for (int j = 2; j < 15; j++) {
-                if (j < 11) {
+            for (int j = 1; j < 14; j++) {
+                if (j == 1) {
+                    deck.add(new Card("A", suit, 1));
+                } else if (j < 11) {
                     deck.add(new Card("" + j, suit, j));
                 } else if (j == 11) {
                     deck.add(new Card("J", suit, 10));
@@ -41,8 +43,6 @@ public class Deck {
                     deck.add(new Card("Q", suit, 10));
                 } else if (j == 13) {
                     deck.add(new Card("K", suit, 10));
-                } else {
-                    deck.add(new Card("A", suit, 11));
                 }
 
             }

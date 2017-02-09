@@ -46,19 +46,24 @@ public class DealerTest {
     public void constructorSetNameWorks() {
         assertEquals("Jonne", d.getName());
     }
-    
-    
+
     // testing that deck has 52 different cards
     @Test
-    public void constructorCreatingDeck() {
+    public void createDeckWorks() {
+        d.createDeck();
         List<Card> list = d.getDeck().getDeckList();
         Set<Integer> set = new HashSet(list);
         assertEquals(list.size(), set.size());
     }
-    
+
     @Test
     public void dealCardWorks() {
-        
+        d.createDeck();
+        Deck deck = new Deck();
+        deck.createDeck();
+        for (int i = 0; i < d.deckSize(); i++) {
+            assertEquals("" + deck.getCard(i), "" + d.dealCard(i));
+        }
     }
 
 }

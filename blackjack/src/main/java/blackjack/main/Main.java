@@ -26,6 +26,9 @@ public class Main {
         UiCommands ui = new UiCommands();
         ui.startGame();
         
+//         Deck deck = new Deck();
+//         deck.createDeck();
+//         deck.printDeck();
     }
     
 }

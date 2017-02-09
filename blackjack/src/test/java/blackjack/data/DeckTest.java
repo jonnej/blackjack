@@ -6,6 +6,9 @@ package blackjack.data;
  * and open the template in the editor.
  */
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -33,20 +36,28 @@ public class DeckTest {
     @Before
     public void setUp() {
         deck = new Deck();
-        deck.createDeck();
+        
     }
     
     @After
     public void tearDown() {
     }
     
-//    @Test
-//    public void createDeckWorks() {
-//        
-//    }
+    @Test
+    public void createDeckWorks() {
+        deck.createDeck();
+        List<Card> list = deck.getDeckList();
+        Set<Integer> set = new HashSet(list);
+        assertEquals(list.size(), set.size());
+    }
     
-//    @Test
-//    public void getCardWorks() {
-//        
-//    }
+    @Test
+    public void getCardWorks() {      
+        Deck helpDeck = new Deck();
+        helpDeck.createDeck();
+        deck.createDeck();
+        for (int i = 0; i < deck.getDeckList().size(); i++) {
+            assertEquals(""+ helpDeck.getDeckList().get(i),"" + deck.getCard(i));
+        }
+    }
 }

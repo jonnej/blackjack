@@ -23,31 +23,25 @@ public class Player {
     public double getMoney() {
         return money;
     }
+    
+    public List getDealtCards() {
+        return dealtCards;
+    }
 
     public void addMoney(int winAmount) {
-        if (winAmount < 0) {
-            return;
+        if (winAmount > 0) {
+            money += winAmount;
         }
-        money += winAmount;
     }
 
     public void removeMoney(int betAmount) {
-        if (betAmount < 0 || money < betAmount) {
-            return;
+        if (betAmount > 0 & money >= betAmount) {
+            money -= betAmount;
         }
-        money -= betAmount;
     }
 
     public int getHandValue() {
         return handValue;
-    }
-    
-    public void setHandValueZero() {
-        handValue = 0;
-    }
-
-    public void addToHandValue(Card card) {
-        handValue += card.getValue();
     }
 
     public void setName(String name) {
@@ -57,18 +51,18 @@ public class Player {
     public void setMoney(double money) {
         this.money = money;
     }
-    
+
     public void addCard(Card c) {
         dealtCards.add(c);
         handValue += c.getValue();
     }
-    
+
     public void printDealtCards() {
         for (Card c : dealtCards) {
             System.out.println(c);
         }
     }
-    
+
     public void clearDealtCardsAndHandValueToZero() {
         dealtCards.clear();
         handValue = 0;
