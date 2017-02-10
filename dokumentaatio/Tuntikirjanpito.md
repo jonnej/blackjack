@@ -7,3 +7,5 @@ Päivä | Tunnit | Kuvaus
 31.01.2017 | 6.5h | Kirjoitettiin testejä, luotiin lisää logiikkaa ja luotiin tekstikäyttöliittymä
 03.02.2017 | 4.0h | Vähän koodia ja testiä
 08.02.2017 | 4.5h | GUI-luokkien tekoa
+09.02.2017 | 4.0h | Testien tekoa
+10.02.2017 | 3.0h | Java-doc kirjoittelua, testejä ja gui hommien kattelua
