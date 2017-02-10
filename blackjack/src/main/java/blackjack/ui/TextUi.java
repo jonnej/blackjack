@@ -10,7 +10,7 @@ import blackjack.data.*;
 import blackjack.logiikka.*;
 
 /**
- *
+ * Class for checking game working in text format
  * @author joju
  */
 public class TextUi {
@@ -23,6 +23,8 @@ public class TextUi {
 
     // Tekstikäyttöliittymä toimii oikein tällä hetkellä vain yhdellä pelaajan kädellä kerrallaan ja metodia ei ole optimoitu
     public void start() {
+        UiCommands ui = new UiCommands();
+        ui.startGame();
        
 
     }

@@ -8,8 +8,8 @@ package blackjack.data;
 import java.util.*;
 
 /**
- *
- * @author joju
+ * Class creates Card Deck for program. 
+ * Class contains methods to handle deck.
  */
 public class Deck {
 
@@ -19,9 +19,13 @@ public class Deck {
         this.deck = new ArrayList<>();
     }
 
-//    public void addCardtoDeck(Card card) {
-//        this.deck.add(card);
-//    }
+    /**
+    * Method adds 52 French playing cards to deck.
+    * Calling method again will add new 52 cards.
+    * After that deck will consist of 104 cards and every card
+    * will have one duplicate.
+    * Calling over and over again will work same.
+    */
     public void createDeck() {
         String suit = "spades";
         for (int i = 1; i < 5; i++) {
@@ -48,7 +52,11 @@ public class Deck {
             }
         }
     }
-
+    /**
+     * Method gets wanted card from deck list using position.
+     * @param i 
+     * @return wanted card
+     */
     public Card getCard(int i) {
         return deck.get(i);
     }
@@ -56,7 +64,10 @@ public class Deck {
     public List getDeckList() {
         return deck;
     }
-
+    
+    /**
+     * Method prints deck
+     */
     public void printDeck() {
         for (Card c : deck) {
             System.out.println(c);

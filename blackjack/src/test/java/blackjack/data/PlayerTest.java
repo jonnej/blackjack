@@ -83,7 +83,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void addMoneyWorksWithPositiveInteger() {
+    public void addMoneyWorksWithPositiveDouble() {
         p.addMoney(5);
         assertEquals((double) 20, p.getMoney(), 0.01);
     }
@@ -95,15 +95,20 @@ public class PlayerTest {
     }
 
     @Test
-    public void addMoneyWorksWithNegativeInteger() {
+    public void addMoneyWorksWithNegativeDouble() {
         p.addMoney(-5);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
 
     @Test
-    public void removeMoneyWorksWithPositiveInteger() {
+    public void removeMoneyWorksWithPositiveDoubleWhenEnoughMoney() {
         p.removeMoney(5);
         assertEquals((double) 10, p.getMoney(), 0.01);
+    }
+    @Test
+    public void removeMoneyWorksWithPositiveDoubleWhenNotEnoughMoney() {
+        p.removeMoney(20);
+        assertEquals((double) 15, p.getMoney(), 0.01);
     }
     
     @Test
@@ -113,10 +118,11 @@ public class PlayerTest {
     }
 
     @Test
-    public void removeMoneyWorksWithNegativeInteger() {
+    public void removeMoneyWorksWithNegativeDoubleWhenEnoughMoney() {
         p.removeMoney(-5);
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
+    
 
     @Test
     public void removeMoneyWorksWithPositiveIntegerWhenNotEnoughMoney() {
@@ -124,11 +130,7 @@ public class PlayerTest {
         assertEquals((double) 15, p.getMoney(), 0.01);
     }
 
-    @Test
-    public void removeMoneyWorksWithNegativeIntegerWhenNotEnoughMoney() {
-        p.removeMoney(-20);
-        assertEquals((double) 15, p.getMoney(), 0.01);
-    }
+    
     
     @Test
     public void clearDealtCardsAndHandValueToZeroWorks() {

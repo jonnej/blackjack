@@ -6,7 +6,10 @@ import blackjack.logiikka.Betting;
 import blackjack.logiikka.Dealer;
 import java.util.*;
 
-
+/**
+ * Class has methods for text user interface.
+ * @author joju
+ */
 public class UiCommands {
 
     private Scanner lukija;
