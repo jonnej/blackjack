@@ -8,7 +8,7 @@ import blackjack.*;
 import java.util.*;
 
 /**
- *
+ * Class will show game window where playing blackjack happens.
  * @author joju
  */
 public class GUIgame extends javax.swing.JFrame {

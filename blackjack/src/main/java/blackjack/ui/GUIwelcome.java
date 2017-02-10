@@ -8,7 +8,7 @@ import blackjack.*;
 import java.util.*;
 
 /**
- *
+ * Class will show first window user will see when starting game.
  * @author joju
  */
 public class GUIwelcome extends javax.swing.JFrame {

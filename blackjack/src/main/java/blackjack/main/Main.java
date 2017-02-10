@@ -23,12 +23,12 @@ public class Main {
     public static void main(String[] args) {
 //       TextUi ui = new TextUi();
 //       ui.start();
-        UiCommands ui = new UiCommands();
-        ui.startGame();
+//        UiCommands ui = new UiCommands();
+//        ui.startGame();
         
-//         Deck deck = new Deck();
-//         deck.createDeck();
-//         deck.printDeck();
+         Deck deck = new Deck();
+         deck.createDeck();
+         deck.printDeck();
     }
     
 }

@@ -6,8 +6,7 @@
 package blackjack.data;
 
 /**
- *
- * @author joju
+ * Class makes Card object for blackjack program.
  */
 public class Card {
     private String name;
