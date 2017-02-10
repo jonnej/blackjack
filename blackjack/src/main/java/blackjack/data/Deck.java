@@ -36,31 +36,6 @@ public class Deck {
                 }
             }
         }
-
-//        String suit = "spades";
-//        for (int i = 1; i < 5; i++) {
-//            if (i == 2) {
-//                suit = "clubs";
-//            } else if (i == 3) {
-//                suit = "diamonds";
-//            } else if (i == 4) {
-//                suit = "hearts";
-//            }
-//            for (int j = 1; j < 14; j++) {
-//                if (j == 1) {
-//                    deck.add(new Card("A", suit, 1));
-//                } else if (j < 11) {
-//                    deck.add(new Card("" + j, suit, j));
-//                } else if (j == 11) {
-//                    deck.add(new Card("J", suit, 10));
-//                } else if (j == 12) {
-//                    deck.add(new Card("Q", suit, 10));
-//                } else if (j == 13) {
-//                    deck.add(new Card("K", suit, 10));
-//                }
-//
-//            }
-//        }
     }
 
     /**
