@@ -9,3 +9,4 @@ Päivä | Tunnit | Kuvaus
 08.02.2017 | 4.5h | GUI-luokkien tekoa
 09.02.2017 | 4.0h | Testien tekoa
 10.02.2017 | 3.0h | Java-doc kirjoittelua, testejä ja gui hommien kattelua
+15.02.2017 | 5.5h | GUI-luontia, gui painikkeiden action metodien tekoa UiCommands-luokkaan

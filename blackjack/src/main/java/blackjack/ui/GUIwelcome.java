@@ -14,12 +14,13 @@ import javax.swing.text.NumberFormatter;
  * @author joju
  */
 public class GUIwelcome extends javax.swing.JFrame {
-
+    private UiCommands uic;
     /**
      * Creates new form BlackjackGUI
      */
     public GUIwelcome() {
         initComponents();
+        uic = new UiCommands();
     }
 
     /**
@@ -109,7 +110,11 @@ public class GUIwelcome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        String name = jFormattedTextField1.getText();
+        String money = jFormattedTextField2.getText();
+        Double chips = Double.parseDouble(money);
+        uic.initializePlayerAndOtherObjects(name, chips);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed

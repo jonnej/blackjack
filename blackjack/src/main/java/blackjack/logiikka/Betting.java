@@ -22,7 +22,7 @@ public class Betting {
     public int getBet() {
         return this.bet;
     }
-    
+
     public void setBet(int b) {
         if (b > 0) {
             bet = b;
@@ -44,6 +44,10 @@ public class Betting {
             return;
         }
         bet -= 1;
+    }
+
+    public void bet(int amount) {
+      bet += amount;
     }
 
 }

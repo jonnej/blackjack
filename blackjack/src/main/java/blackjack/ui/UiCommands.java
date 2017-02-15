@@ -17,42 +17,75 @@ public class UiCommands {
     private Dealer dealer;
     private Player casino;
     private Betting betting;
+    private int position;
 
     public UiCommands() {
         lukija = new Scanner(System.in);
+        position = 0;
     }
 
     private void welcomeText() {
         System.out.println("Tervetuloa pelaamaan Blackjackia!");
     }
-
-    private void askNameAndChipsInitializePlayerAndOtherObjects() {
-        System.out.println("Antakaa nimenne: ");
-        String name = lukija.nextLine();
-        System.out.println("Antakaa aloitusmerkkimäärä (kokonaisluku): ");
-        int rahaa = Integer.parseInt(lukija.nextLine());
-        player = new Player(name, rahaa);
-        casino = new Player("casino", 1000);
-        betting = new Betting();
-        dealer = new Dealer("Jonne");
-
+    // welcome uin komentoja, Tällä hetkellä tosin vain pelkän GUIgamen avulla testaamista
+    public void initializePlayerAndOtherObjects(String name, double rahaa) {
+      player = new Player(name, rahaa);
+      casino = new Player("casino", 1000);
+      betting = new Betting();
+      dealer = new Dealer("Jonne");
+      dealer.createDeck();
+    }
+    
+    public double getPlayerMoney() {
+        return player.getMoney();
     }
 
-    public void startGame() {
-        welcomeText();
-        askNameAndChipsInitializePlayerAndOtherObjects();
-        while (true) {
-            if (!checkPlayerHasEnoughMoney()) {
-                break;
-            }
-            placeBets();
-            dealingHand();
-            if (!askForNewGame()) {
-                break;
-            }
 
-        }
-        System.out.println("Peli päättyi! Tuloksenne on: " + player);
+    // game uin komentoja
+    public void bet(int amount) {
+      betting.bet(amount);
+    }
+
+    public int getBet() {
+      return betting.getBet();
+    }
+
+    public void clearBet() {
+      betting.setBet(0);
+    }
+
+    public void doubleBet() {
+      betting.setBet(betting.getBet());
+    }
+
+    public void setPositionZero() {
+      position = 0;
+    }
+
+    public void dealCard(String str) {
+      if (str.equals("player")) {
+        player.addCard(dealer.dealCard(position));
+      } else {
+        casino.addCard(dealer.dealCard(position));
+      }
+      position++;
+    }
+
+    public int getHandValue(String str) {
+      if (str.equals("player")) {
+        return player.getHandValue();
+      } else {
+        return casino.getHandValue();
+      }
+    }
+
+    public void startDealHand() {
+      setPositionZero();
+      player.removeMoney(betting.getBet());
+      dealer.shuffleDeckNTimes(3);
+      dealCard("player");
+      dealCard("casino");
+      dealCard("player");
     }
 
     private boolean checkPlayerHasEnoughMoney() {
@@ -61,92 +94,6 @@ public class UiCommands {
             return false;
         }
         return true;
-    }
-
-    private void placeBets() {
-        System.out.println("Antakaa panoksenne: ");
-        int bet = Integer.parseInt(lukija.nextLine());
-        while (bet > player.getMoney()) {
-            System.out.println("Panos liian suuri! Nykyinen saldonne: " + player.getMoney() + ". Antakaa uusi panos: ");
-            bet = Integer.parseInt(lukija.nextLine());
-        }
-
-        betting.setBet(bet);
-    }
-
-    private void dealingHand() {
-        System.out.println("Jako alkaa!");
-        int i = 0;
-        player.removeMoney(betting.getBet());
-        dealer.createDeck();
-        dealer.shuffleDeckNTimes(3);
-
-        player.addCard(dealer.dealCard(i));
-        i++;
-        casino.addCard(dealer.dealCard(i));
-        i++;
-        player.addCard(dealer.dealCard(i));
-        i++;
-        System.out.println(player.getName() + ":n käsi ja käden summa: ");
-        player.printDealtCards();
-        System.out.println("Summa: " + player.getHandValue());
-        System.out.println("Jakajan käsi ja käden summa: ");
-        casino.printDealtCards();
-        System.out.println("Summa: " + casino.getHandValue());
-
-        while (true) {
-            Card card = dealer.dealCard(i);
-            System.out.println("Kätenne nyt: ");
-            player.printDealtCards();
-            System.out.println("Summa: " + player.getHandValue());
-            System.out.println("Ota kortti, kirjoittamalla ota, muulla syötteellä jäät tähän");
-            String command = lukija.nextLine();
-            if (command.equals("ota")) {
-                player.addCard(card);
-                if (player.getHandValue() > 21) {
-                    System.out.println("Summa nyt: " + player.getHandValue() + " menitte yli 21, hävisitte");
-
-                    i++;
-                    break;
-                }
-                System.out.println("Summa nyt: " + player.getHandValue());
-            } else {
-                System.out.println("Summa nyt: " + player.getHandValue());
-                break;
-            }
-
-            i++;
-        }
-
-        if (player.getHandValue() > 21) {
-            player.clearDealtCardsAndHandValueToZero();
-            casino.clearDealtCardsAndHandValueToZero();
-            return;
-        } else {
-            while (true) {
-                Card card = dealer.dealCard(i);
-                casino.addCard(card);
-                System.out.println("Jakajan kortit ja summa: ");
-                casino.printDealtCards();
-                System.out.println("Summa: " + casino.getHandValue());
-                if (casino.getHandValue() >= 17) {
-                    break;
-                }
-                i++;
-            }
-        }
-
-        if (player.getHandValue() > casino.getHandValue() || casino.getHandValue() > 21) {
-            System.out.println("Voitit jakajan!");
-            player.addMoney(betting.getBet() * 2);
-        } else if (player.getHandValue() == casino.getHandValue()) {
-            System.out.println("Tasapeli!");
-            player.addMoney(betting.getBet());
-        } else {
-            System.out.println("Hävisit!");
-        }
-        player.clearDealtCardsAndHandValueToZero();
-        casino.clearDealtCardsAndHandValueToZero();
     }
 
     private boolean askForNewGame() {
