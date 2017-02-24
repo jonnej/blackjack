@@ -11,3 +11,14 @@ Rakenne
 -------
 
 ![Määrittelyvaiheen luokkakaavio](kuvat/luokkaavio1002.png)
+
+
+Sekvenssikaavioita
+------------------
+![Väärin annettu nimi ja rahamäärä](kuvat/Väärin annettu nimi ja rahamäärä.png)
+
+![Onnistunut nimen ja rahamäärän antaminen](kuvat/Onnistunut nimen ja rahamäärän antaminen.png.png)
+
+![Oikein annettu nimi ja rahamäärä, pelataan yksi käsi](kuvat/Oikein annettu nimi ja rahamäärä, pelataan yksi käsi.png)
+
+
