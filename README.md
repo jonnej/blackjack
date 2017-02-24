@@ -11,4 +11,4 @@ Javalabra aiheenani on luoda Blackjack nimiseen peliin perustuva nettiversio.
 
 [Pit-raportit](https://htmlpreview.github.io/?https://github.com/jonnej/blackjack/blob/master/dokumentaatio/pit/201702031739/index.html)
 
-[Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/jonnej/blackjack/blob/master/dokumentaatio/checkstyle.html)
+[Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/jonnej/blackjack/dokumentaatio/checkstyle.html )
