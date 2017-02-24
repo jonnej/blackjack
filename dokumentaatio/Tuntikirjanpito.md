@@ -10,3 +10,8 @@ Päivä | Tunnit | Kuvaus
 09.02.2017 | 4.0h | Testien tekoa
 10.02.2017 | 3.0h | Java-doc kirjoittelua, testejä ja gui hommien kattelua
 15.02.2017 | 5.5h | GUI-luontia, gui painikkeiden action metodien tekoa UiCommands-luokkaan
+17.02.2017 | 5.0h | Yritystä tehdä GUI netbeansin työkalulla, mutta lopulta päätös alkaa itse tekemään.
+20.02.2017 | 4.0h | GUI-luontia
+21.02.2017 | 5.0h | GUI-luontia
+22.02.2017 | 5.0h | GUI-luontia
+24.02.2017 | 4.5h | Uusi GIT repo, gui hienosääntöä, dokumentaatiota
