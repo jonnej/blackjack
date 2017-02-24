@@ -14,4 +14,4 @@ Päivä | Tunnit | Kuvaus
 20.02.2017 | 4.0h | GUI-luontia
 21.02.2017 | 5.0h | GUI-luontia
 22.02.2017 | 5.0h | GUI-luontia
-24.02.2017 | 4.5h | Uusi GIT repo, gui hienosääntöä, dokumentaatiota
+24.02.2017 | 4.5h | Uusi GIT repo (ei korjannu git ongelmaa), gui hienosääntöä, dokumentaatiota
