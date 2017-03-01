@@ -40,12 +40,12 @@ public class HandTest {
     @After
     public void tearDown() {
     }
-    
-        @Test
+
+    @Test
     public void constructorSetsHandValueRight() {
         assertEquals(0, h.getHandValue());
     }
-    
+
     @Test
     public void constructorSetsHandValueWithAceRight() {
         assertEquals(0, h.getHandValueWithAce());
@@ -125,8 +125,8 @@ public class HandTest {
         h.addCard(c2);
         assertEquals(14, h.getHandValue());
     }
-    
-        @Test
+
+    @Test
     public void clearDealtCardsAndHandValueToZeroWorks() {
         Card c = new Card("9", "clubs", 9, new ImageIcon("9_of_clubs"));
         h.addCard(c);

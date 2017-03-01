@@ -16,15 +16,21 @@ import java.util.*;
 public class Betting {
 
     private int bet;
+    private double insurance;
     /**
      * Constructor initializes betting object and sets bet to zero.
      */
     public Betting() {
         this.bet = 0;
+        this.insurance = 0;
     }
 
     public int getBet() {
         return this.bet;
+    }
+    
+    public double getInsurance() {
+        return this.insurance;
     }
 
     /**
@@ -38,6 +44,13 @@ public class Betting {
         } else {
             bet = 0;
         }
+    }
+    
+    /**
+     * Method sets insurance value depending on current bet value.
+     */
+    public void setInsurance() {
+        insurance = bet/2;
     }
 
     /**

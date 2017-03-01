@@ -13,9 +13,7 @@ public class Player {
     private String name;
     private double money;
     private Hand hand;
-//    private int handValue;
-//    private int handValueWithAce;
-//    private List<Card> dealtCards;
+    private boolean insurance;
 
     /**
      * Constructor initializes Player object and it's attributes.
@@ -27,10 +25,7 @@ public class Player {
         this.name = name;
         this.money = money;
         this.hand = hand;
-//        this.handValue = 0;
-//        this.handValueWithAce = 0;
-
-//        this.dealtCards = new ArrayList();
+        this.insurance = false;
     }
 
     public String getName() {
@@ -40,14 +35,18 @@ public class Player {
     public double getMoney() {
         return money;
     }
-    
+
     public Hand getHand() {
         return hand;
     }
-
-//    public List getDealtCards() {
-//        return dealtCards;
-//    }
+    
+    public boolean getInsurance() {
+        return insurance;
+    }
+    
+    public void setInsurance(boolean b) {
+        insurance = b;
+    }
 
     /**
      * Method adds money to players money balance.
@@ -71,14 +70,6 @@ public class Player {
         }
     }
 
-//    public int getHandValue() {
-//        return handValue;
-//    }
-//
-//    public int getHandValueWithAce() {
-//        return handValueWithAce;
-//    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -86,45 +77,6 @@ public class Player {
     public void setMoney(double money) {
         this.money = money;
     }
-
-    /**
-     * Method adds card to players dealtCards list and sums cards value to
-     * handValue and handValueWithAce.
-     *
-     * @param c card dealt to player in game
-     */
-//    public void addCard(Card c) {
-//        dealtCards.add(c);
-//        handValue += c.getValue();
-//        if (handValueWithAce + c.getValue() > 21) {
-//            handValueWithAce = handValue;
-//        } else if (c.getName().equals("A") && handValueWithAce < 11) {
-//            handValueWithAce += 11;
-//        } else {
-//            handValueWithAce += c.getValue();
-//        }
-//    }
-
-//    /**
-//     * Method returns biggest valid hand value using Math.max method.
-//     *
-//     * @return highest hand value of two choices
-//     */
-//    public int getHighestValidHand() {
-//        int h1 = handValue;
-//        int h2 = handValueWithAce;
-//
-//        return Math.max(h1, h2);
-//    }
-
-//    /**
-//     * Method clears player's dealtCards list and sets handValue to zero.
-//     */
-//    public void clearDealtCardsAndHandValueToZero() {
-////        dealtCards.clear();
-//        handValue = 0;
-//        handValueWithAce = 0;
-//    }
 
     @Override
     public String toString() {

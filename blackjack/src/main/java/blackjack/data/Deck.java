@@ -6,6 +6,7 @@
 package blackjack.data;
 
 import java.util.*;
+
 import javax.swing.ImageIcon;
 
 /**
@@ -16,8 +17,10 @@ public class Deck {
     private List<Card> deck;
     private String[] suit = {"spades", "clubs", "diamonds", "hearts"};
     private String[] name = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
     /**
-     * Constructor creates Deck object and initializes ArrayList for keeping cards.
+     * Constructor creates Deck object and initializes ArrayList for keeping
+     * cards.
      */
     public Deck() {
         this.deck = new ArrayList<>();
@@ -34,6 +37,9 @@ public class Deck {
             int value = 1;
             for (String n : name) {
                 String path = "card-images/" + n + "_of_" + s + ".png";
+                
+//                java.net.URL url = getClass().getResource(path);
+                
                 ImageIcon ic = new ImageIcon(path);
                 deck.add(new Card(n, s, value, ic));
                 if (value < 10) {

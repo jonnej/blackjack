@@ -7,7 +7,9 @@ import blackjack.logiikka.Dealer;
 import java.awt.Image;
 import java.util.*;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -92,6 +94,20 @@ public class UiCommands {
     public void doubleBet(Betting b, Player p) {
         p.removeMoney(b.getBet());
         b.doubleBet();
+    }
+
+    public void askForInsurance(Player p, Betting b, JFrame frame) {
+        int response = JOptionPane.showConfirmDialog(null, "Haluatko vakuutuksen?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.NO_OPTION) {
+
+        } else if (response == JOptionPane.YES_OPTION) {
+            b.setInsurance();
+            p.removeMoney(b.getInsurance());
+            p.setInsurance(true);
+        } else if (response == JOptionPane.CLOSED_OPTION) {
+
+        }
     }
 
     public void setPositionZero() {
@@ -247,19 +263,60 @@ public class UiCommands {
      * @return result of game
      */
     public String checkWinnerAndPayWins(Player p, Player c, Betting b) {
+        if (handIsBlackJack(c)) {
+            if (handIsBlackJack(p)) {
+                payWins(p, c, b);
+                return "Tasapeli";
+            } else {
+                payWins(p, c, b);
+                return "Jakajalla on Blackjack";
+            }
+        }
 
-        if (!checkIfHandValueUnderTwentyTwo(c) || playerWins(p, c)) {
+        if (!checkIfHandValueUnderTwentyTwo(c)) {
+            payWins(p, c, b);
+            return "Voitit";
+        }
+        if (playerWins(p, c)) {
             payWins(p, c, b);
             if (handIsBlackJack(p)) {
                 return "BlackJack! Voitit";
             }
             return "Voitit";
         }
+
         if (gameIsDraw(p, c)) {
             payWins(p, c, b);
             return "Tasapeli";
         }
+
         return "Hävisit";
+
+    }
+
+    /**
+     * Method adds wins to player depending of result of the game.
+     *
+     * @param p user player
+     * @param c casino player
+     * @param b used betting object
+     */
+    public void payWins(Player p, Player c, Betting b) {
+
+        if (p.getInsurance() && !playerWins(p, c) && handIsBlackJack(c)) {
+            p.addMoney(b.getInsurance() * 3);
+        } else if (p.getInsurance() && gameIsDraw(p, c) && handIsBlackJack(c)) {
+            p.addMoney(b.getBet() * 2);
+        } else if (gameIsDraw(p, c)) {
+            p.addMoney(b.getBet());
+        } else if (handIsBlackJack(p) && !handIsBlackJack(c)) {
+            p.addMoney(b.getBet() * 2.5);
+
+        } else if (gameIsDraw(p, c)) {
+            p.addMoney(b.getBet());
+        } else {
+            p.addMoney(b.getBet() * 2);
+        }
 
     }
 
@@ -276,24 +333,6 @@ public class UiCommands {
         jlabel.setIcon(ic);
         jlabel.setVisible(true);
         jp.add(jlabel);
-    }
-
-    /**
-     * Method pays wins to player depending of result of the game.
-     *
-     * @param p user player
-     * @param c casino player
-     * @param b used betting object
-     */
-    public void payWins(Player p, Player c, Betting b) {
-
-        if (handIsBlackJack(p) && !handIsBlackJack(c)) {
-            p.addMoney(b.getBet() * 2.5);
-        } else if (playerWins(p, c)) {
-            p.addMoney(b.getBet() * 2);
-        } else {
-            p.addMoney(b.getBet());
-        }
     }
 
 }

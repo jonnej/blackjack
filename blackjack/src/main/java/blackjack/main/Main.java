@@ -5,15 +5,7 @@
  */
 package blackjack.main;
 
-import blackjack.ui.UiCommands;
-import blackjack.data.*;
-import blackjack.logiikka.*;
 import blackjack.ui.*;
-import java.awt.BorderLayout;
-import java.util.Collections;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -28,9 +20,6 @@ public class Main {
     public static void main(String[] args) {
         WelcomeGUI wlc = new WelcomeGUI();
         SwingUtilities.invokeLater(wlc);
-//        GameGUI peli = new GameGUI("jonne", 100);
-//        peli.run();
-
     }
 
 }

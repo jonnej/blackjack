@@ -15,3 +15,4 @@ Päivä | Tunnit | Kuvaus
 21.02.2017 | 5.0h | GUI-luontia
 22.02.2017 | 5.0h | GUI-luontia
 24.02.2017 | 4.5h | Uusi GIT repo (ei korjannu git ongelmaa), gui hienosääntöä, dokumentaatiota
+01.03.2017 | 3.5h | Luotiin uusi luokka Hand, aloitettiin Vakuutus toiminnallisuuden tekoa.
