@@ -6,6 +6,7 @@
 package blackjack.data;
 
 import java.util.*;
+import javax.swing.ImageIcon;
 
 /**
  * Class creates Card Deck for program. Class contains methods to handle deck.
@@ -15,7 +16,9 @@ public class Deck {
     private List<Card> deck;
     private String[] suit = {"spades", "clubs", "diamonds", "hearts"};
     private String[] name = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-
+    /**
+     * Constructor creates Deck object and initializes ArrayList for keeping cards.
+     */
     public Deck() {
         this.deck = new ArrayList<>();
     }
@@ -30,7 +33,9 @@ public class Deck {
         for (String s : suit) {
             int value = 1;
             for (String n : name) {
-                deck.add(new Card(n, s, value));
+                String path = "card-images/" + n + "_of_" + s + ".png";
+                ImageIcon ic = new ImageIcon(path);
+                deck.add(new Card(n, s, value, ic));
                 if (value < 10) {
                     value++;
                 }
@@ -41,7 +46,7 @@ public class Deck {
     /**
      * Method gets wanted card from deck list using position.
      *
-     * @param i
+     * @param i position of top card of deck
      * @return wanted card
      */
     public Card getCard(int i) {
@@ -51,14 +56,4 @@ public class Deck {
     public List getDeckList() {
         return deck;
     }
-
-    /**
-     * Method prints deck.
-     */
-    public void printDeck() {
-        for (Card c : deck) {
-            System.out.println(c);
-        }
-    }
-
 }
