@@ -110,7 +110,7 @@ public class UiCommands {
      * @return dealt card's image icon
      */
     public ImageIcon dealCard(Player p, Dealer d) {
-        p.addCard(d.dealCard(position));
+        p.getHand().addCard(d.dealCard(position));
         position++;
         return getImageIcon(d.dealCard(position - 1));
     }
@@ -124,7 +124,7 @@ public class UiCommands {
      * @return player's hand value
      */
     public int getHandValue(Player p) {
-        return p.getHandValue();
+        return p.getHand().getHandValue();
     }
 
     /**
@@ -136,7 +136,7 @@ public class UiCommands {
      * @return player's biggest hand value
      */
     public int getBiggestValidHandValue(Player p) {
-        return p.getHighestValidHand();
+        return p.getHand().getHighestValidHand();
     }
 
     /**
@@ -148,10 +148,10 @@ public class UiCommands {
      * @return hand value using string
      */
     public String printHandValue(Player p) {
-        if (p.getHandValue() != p.getHandValueWithAce() && p.getHandValueWithAce() < 22) {
-            return p.getHandValue() + "/" + p.getHandValueWithAce();
+        if (p.getHand().getHandValue() != p.getHand().getHandValueWithAce() && p.getHand().getHandValueWithAce() < 22) {
+            return p.getHand().getHandValue() + "/" + p.getHand().getHandValueWithAce();
         }
-        return "" + p.getHandValue();
+        return "" + p.getHand().getHandValue();
     }
 
     /**
@@ -180,8 +180,8 @@ public class UiCommands {
      */
     public void startBetting(Player p1, Player p2, Dealer d, Betting b) {
         setPositionZero();
-        p1.clearDealtCardsAndHandValueToZero();
-        p2.clearDealtCardsAndHandValueToZero();
+        p1.getHand().clearDealtCardsAndHandValueToZero();
+        p2.getHand().clearDealtCardsAndHandValueToZero();
         d.shuffleDeckNTimes(3);
     }
 
@@ -203,7 +203,7 @@ public class UiCommands {
      * @return boolean
      */
     public boolean checkIfHandValueUnderTwentyTwo(Player p) {
-        return p.getHandValue() < 22;
+        return p.getHand().getHandValue() < 22;
     }
 
     /**
@@ -213,7 +213,7 @@ public class UiCommands {
      * @return boolean
      */
     public boolean handIsBlackJack(Player p) {
-        return p.getHandValueWithAce() == 21 && p.getDealtCards().size() == 2;
+        return p.getHand().getHandValueWithAce() == 21 && p.getHand().getDealtCards().size() == 2;
     }
 
     /**
@@ -224,7 +224,7 @@ public class UiCommands {
      * @return boolean
      */
     public boolean playerWins(Player p, Player c) {
-        return p.getHighestValidHand() > c.getHighestValidHand();
+        return p.getHand().getHighestValidHand() > c.getHand().getHighestValidHand();
     }
 
     /**
@@ -235,7 +235,7 @@ public class UiCommands {
      * @return boolean
      */
     public boolean gameIsDraw(Player p, Player c) {
-        return p.getHighestValidHand() == c.getHighestValidHand();
+        return p.getHand().getHighestValidHand() == c.getHand().getHighestValidHand();
     }
 
     /**

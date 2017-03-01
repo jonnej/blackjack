@@ -6,6 +6,7 @@
 package blackjack.ui;
 
 import blackjack.data.Card;
+import blackjack.data.Hand;
 import blackjack.data.Player;
 import blackjack.logiikka.Betting;
 import blackjack.logiikka.Dealer;
@@ -100,8 +101,8 @@ public class GameGUI implements Runnable {
 
         dlCards = new JLabel("Jakajan korttien summa: 0");
 
-        player = new Player(name, money);
-        casino = new Player("casino", 1000);
+        player = new Player(name, money, new Hand());
+        casino = new Player("casino", 1000, new Hand());
         betting = new Betting();
         dealer = new Dealer("Jonne");
         dealer.createDeck();
