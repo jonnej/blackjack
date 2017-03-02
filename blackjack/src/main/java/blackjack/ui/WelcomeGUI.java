@@ -45,7 +45,7 @@ public class WelcomeGUI implements Runnable {
         NumberFormatter formatter = new NumberFormatter(format);
         formatter.setValueClass(Integer.class);
         formatter.setMinimum(0);
-        formatter.setMaximum(Integer.MAX_VALUE);
+        formatter.setMaximum(999);
         formatter.setAllowsInvalid(false);
         formatter.setCommitsOnValidEdit(true);
         addMoney = new JFormattedTextField(formatter);
@@ -69,7 +69,7 @@ public class WelcomeGUI implements Runnable {
         c.setBackground(Color.white);
 
         wlcText.setFont(new Font("default", Font.BOLD, 16));
-        wlcText.setText("Tervetuloa pelaamaan blackjackia! \n Syöttäkää nimenne ja rahamäärä. \n Tämän jälkeen painakaa OK");
+        wlcText.setText("Tervetuloa pelaamaan blackjackia! \n Syöttäkää nimenne ja rahamäärä (Max 999). \n Tämän jälkeen painakaa OK");
         wlcText.setBounds(135, 50, 300, 125);
         wlcText.setEnabled(false);
         c.add(wlcText);
@@ -85,7 +85,7 @@ public class WelcomeGUI implements Runnable {
         ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double moneyFieldValue = Double.parseDouble(addMoney.getText());
+                double moneyFieldValue = Double.parseDouble(addMoney.getText().trim());
                 String nameFieldText = addName.getText();
                 if (moneyFieldValue == 0 || nameFieldText.equals("")) {
                     JOptionPane.showMessageDialog(frame, "Nimi ei voi olla tyhjä ja rahamäärä pitää olla enemmän kuin 0!");

@@ -16,3 +16,4 @@ Päivä | Tunnit | Kuvaus
 22.02.2017 | 5.0h | GUI-luontia
 24.02.2017 | 4.5h | Uusi GIT repo (ei korjannu git ongelmaa), gui hienosääntöä, dokumentaatiota
 01.03.2017 | 3.5h | Luotiin uusi luokka Hand, aloitettiin Vakuutus toiminnallisuuden tekoa.
+02.03.2017 | 3.0h | Jaettiin UiCommands-luokka pienempiin luokkiin. Toteutettiin vakuutus toiminnallisuus

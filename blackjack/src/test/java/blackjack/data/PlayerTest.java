@@ -22,7 +22,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        p = new Player("Jonne", 15.0, new Hand());
+        p = new Player("Jonne", 15.0);
 
     }
 

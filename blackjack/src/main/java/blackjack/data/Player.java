@@ -21,10 +21,10 @@ public class Player {
      * @param name user gives name
      * @param money user gives starting money
      */
-    public Player(String name, double money, Hand hand) {
+    public Player(String name, double money) {
         this.name = name;
         this.money = money;
-        this.hand = hand;
+        this.hand = new Hand();
         this.insurance = false;
     }
 

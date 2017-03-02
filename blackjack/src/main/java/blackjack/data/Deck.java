@@ -5,6 +5,7 @@
  */
 package blackjack.data;
 
+import java.awt.Image;
 import java.util.*;
 
 import javax.swing.ImageIcon;
@@ -41,14 +42,28 @@ public class Deck {
 //                java.net.URL url = getClass().getResource(path);
                 
                 ImageIcon ic = new ImageIcon(path);
-                deck.add(new Card(n, s, value, ic));
+                ImageIcon reSized = resizeImageIcon(ic);
+                deck.add(new Card(n, s, value, reSized));
                 if (value < 10) {
                     value++;
                 }
             }
         }
     }
-
+    
+    /**
+     * Method scales given card's image icon to better size.
+     *
+     * @param c dealt card
+     * @see blackjack.data.Card#getImageIcon()
+     * @return card's image icon resized
+     */
+    public ImageIcon resizeImageIcon(ImageIcon ic) {
+        Image image = ic.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(70, 102, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        ic = new ImageIcon(newimg);  // transform it back
+        return ic;
+    }
     /**
      * Method gets wanted card from deck list using position.
      *

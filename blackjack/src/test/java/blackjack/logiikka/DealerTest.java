@@ -65,5 +65,11 @@ public class DealerTest {
             assertEquals("" + deck.getCard(i), "" + d.dealCard(i));
         }
     }
+    
+    @Test
+    public void deckSizeWorksWhenEmptyDeck() {
+        assertEquals(0, d.deckSize());
+    }
+
 
 }

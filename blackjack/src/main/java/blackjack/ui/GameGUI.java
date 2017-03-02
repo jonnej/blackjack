@@ -24,7 +24,10 @@ import javax.swing.*;
  */
 public class GameGUI implements Runnable {
 
-    private UiCommands uic;
+//    private UiCommands uic;
+    private UicBetting uicBet;
+    private UicDealing uicDeal;
+    private UicConclusion uicConc;
 
     private JFrame frame;
     private JPanel jt;
@@ -47,6 +50,7 @@ public class GameGUI implements Runnable {
     private JLabel gameAction;
     private JLabel betNow;
     private JLabel bets;
+    private JLabel insurance;
 
     private JLabel dlCards;
 
@@ -63,9 +67,6 @@ public class GameGUI implements Runnable {
     private JButton[] gameButtons;
     private JButton[] newGameButtons;
 
-    private JLabel[] playerCards;
-    private JLabel[] dealerCards;
-
     /**
      * Constructor initializes needed components.
      *
@@ -73,7 +74,10 @@ public class GameGUI implements Runnable {
      * @param money User gives money in WelcomeGUI window
      */
     public GameGUI(String name, double money) {
-        uic = new UiCommands();
+//        uic = new UiCommands();
+        uicBet = new UicBetting();
+        uicDeal = new UicDealing();
+        uicConc = new UicConclusion();
 
         jt = new JPanel();
         jk = new JPanel();
@@ -98,20 +102,18 @@ public class GameGUI implements Runnable {
         betNow = new JLabel("Panos: 0");
         gameAction = new JLabel("Toiminta");
         bets = new JLabel("Aseta panos");
+        insurance = new JLabel("Vakuutus: Ei");
 
         dlCards = new JLabel("Jakajan korttien summa: 0");
 
-        player = new Player(name, money, new Hand());
-        casino = new Player("casino", 1000, new Hand());
+        player = new Player(name, money);
+        casino = new Player("casino", 1000);
         betting = new Betting();
         dealer = new Dealer("Jonne");
         dealer.createDeck();
 
         betButtons = new JButton[]{betOne, betFive, betToZero};
         gameButtons = new JButton[]{hit, stay, dubbel};
-
-        playerCards = new JLabel[10];
-        dealerCards = new JLabel[10];
 
     }
 
@@ -128,7 +130,7 @@ public class GameGUI implements Runnable {
         componentsForDealerCardPanel();
 
         setAllTexts();
-        uic.startBetting(player, casino, dealer, betting);
+        uicDeal.startBetting(player, casino, dealer, betting);
 
         c.add(jt);
         c.add(jk);
@@ -180,7 +182,8 @@ public class GameGUI implements Runnable {
 
         plCards.setBounds(50, 20, 300, 20);
         plMoney.setBounds(50, 60, 300, 20);
-        betNow.setBounds(365, 100, 150, 20);
+        betNow.setBounds(315, 100, 150, 20);
+        insurance.setBounds(430, 100, 150, 20);
         gameAction.setBounds(365, 20, 100, 20);
 
         hit.setBounds(300, 50, 60, 30);
@@ -188,11 +191,11 @@ public class GameGUI implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dubbel.setEnabled(false);
-                uic.addCardImage(player, pk, dealer);
+                uicDeal.addCardImage(player, pk, dealer);
                 setAllTexts();
                 pk.validate();
 
-                if (!uic.checkIfHandValueUnderTwentyTwo(player)) {
+                if (!uicConc.checkIfHandValueUnderTwentyTwo(player)) {
                     askForNewGame("Hävisit");
                 }
             }
@@ -204,40 +207,39 @@ public class GameGUI implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 enableOrDisableButtons(gameButtons, false);
-                while (uic.getBiggestValidHandValue(casino) < 17) {
-                    uic.addCardImage(casino, jk, dealer);
+                while (uicDeal.getBiggestValidHandValue(casino) < 17) {
+                    uicDeal.addCardImage(casino, jk, dealer);
                     setAllTexts();
                     jk.revalidate();
 
                 }
 
-                askForNewGame(uic.checkWinnerAndPayWins(player, casino, betting));
+                askForNewGame(uicConc.checkWinnerAndPayWins(player, casino, betting));
             }
         }
         );
 
         dubbel.setBounds(
                 440, 50, 120, 30);
-        dubbel.addActionListener(
-                new ActionListener() {
+        dubbel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e
             ) {
-                uic.doubleBet(betting, player);
-                uic.addCardImage(player, pk, dealer);
+                uicBet.doubleBet(betting, player);
+                uicDeal.addCardImage(player, pk, dealer);
                 enableOrDisableButtons(gameButtons, false);
                 setAllTexts();
                 pk.validate();
 
-                if (!uic.checkIfHandValueUnderTwentyTwo(player)) {
+                if (!uicConc.checkIfHandValueUnderTwentyTwo(player)) {
                     askForNewGame("Hävisit");
                 } else {
-                    while (uic.getBiggestValidHandValue(casino) < 17) {
-                        uic.addCardImage(casino, jk, dealer);
+                    while (uicDeal.getBiggestValidHandValue(casino) < 17) {
+                        uicDeal.addCardImage(casino, jk, dealer);
                         setDealerTxt();
                         jk.validate();
                     }
-                    askForNewGame(uic.checkWinnerAndPayWins(player, casino, betting));
+                    askForNewGame(uicConc.checkWinnerAndPayWins(player, casino, betting));
                 }
             }
         }
@@ -248,12 +250,11 @@ public class GameGUI implements Runnable {
 
         betOne.setBounds(
                 620, 50, 45, 30);
-        betOne.addActionListener(
-                new ActionListener() {
+        betOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e
             ) {
-                uic.betMore(betting, 1, player);
+                uicBet.betMore(betting, 1, player);
                 setAllTexts();
             }
         }
@@ -261,12 +262,11 @@ public class GameGUI implements Runnable {
 
         betFive.setBounds(
                 670, 50, 45, 30);
-        betFive.addActionListener(
-                new ActionListener() {
+        betFive.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e
             ) {
-                uic.betMore(betting, 5, player);
+                uicBet.betMore(betting, 5, player);
                 setAllTexts();
             }
         }
@@ -274,12 +274,11 @@ public class GameGUI implements Runnable {
 
         betToZero.setBounds(
                 730, 50, 150, 30);
-        betToZero.addActionListener(
-                new ActionListener() {
+        betToZero.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e
             ) {
-                uic.clearBet(betting, player);
+                uicBet.clearBet(betting, player);
                 setAllTexts();
             }
         }
@@ -287,30 +286,33 @@ public class GameGUI implements Runnable {
 
         startGame.setBounds(
                 730, 20, 150, 25);
-        startGame.addActionListener(
-                new ActionListener() {
+        startGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e
             ) {
-                uic.addCardImage(player, pk, dealer);
-                uic.addCardImage(casino, jk, dealer);
-                uic.addCardImage(player, pk, dealer);
+                uicDeal.addCardImage(player, pk, dealer);
+                uicDeal.addCardImage(casino, jk, dealer);
+                uicDeal.addCardImage(player, pk, dealer);
                 pk.validate();
                 jk.validate();
                 startGame.setEnabled(false);
+                
+                if (uicDeal.getBiggestValidHandValue(casino) == 11) {
+                    uicBet.askForInsurance(player, betting, frame);
+                }
 
-                if (uic.handIsBlackJack(player)) {
-                    if (uic.getBiggestValidHandValue(casino) >= 10) {
-                        uic.addCardImage(casino, jk, dealer);
+                if (uicConc.handIsBlackJack(player)) {
+                    if (uicDeal.getBiggestValidHandValue(casino) >= 10) {
+                        uicDeal.addCardImage(casino, jk, dealer);
                         jk.validate();
                     }
                     setAllTexts();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(GameGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    askForNewGame(uic.checkWinnerAndPayWins(player, casino, betting));
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException ex) {
+//                        Logger.getLogger(GameGUI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                    askForNewGame(uicConc.checkWinnerAndPayWins(player, casino, betting));
 
                 } else {
 
@@ -318,7 +320,7 @@ public class GameGUI implements Runnable {
                     startGame.setEnabled(false);
                     enableOrDisableButtons(gameButtons, true);
                     enableOrDisableButtons(betButtons, false);
-                    if (!uic.checkPlayerHasEnoughMoneyToBet(player, uic.getBet(betting))) {
+                    if (!uicConc.checkPlayerHasEnoughMoneyToBet(player, uicBet.getBet(betting))) {
                         dubbel.setEnabled(false);
                     }
                 }
@@ -335,6 +337,7 @@ public class GameGUI implements Runnable {
         pt.add(plCards);
         pt.add(plMoney);
         pt.add(betNow);
+        pt.add(insurance);
         pt.add(gameAction);
         pt.add(hit);
         pt.add(stay);
@@ -346,14 +349,14 @@ public class GameGUI implements Runnable {
      * Method sets plCards to show player's current Hand value.
      */
     public void setPlayerTxt() {
-        plCards.setText("Pelaajan korttien summa: " + uic.printHandValue(player));
+        plCards.setText("Pelaajan korttien summa: " + uicDeal.printHandValue(player));
     }
 
     /**
      * Method sets dlCards to show dealer's current Hand value.
      */
     public void setDealerTxt() {
-        dlCards.setText("Jakajan korttien summa: " + uic.printHandValue(casino));
+        dlCards.setText("Jakajan korttien summa: " + uicDeal.printHandValue(casino));
     }
 
     /**
@@ -361,21 +364,21 @@ public class GameGUI implements Runnable {
      * off depending the situation.
      */
     public void setBetNowTxt() {
-        betNow.setText("Panos: " + uic.getBet(betting));
-        if (uic.getBet(betting) == 0) {
+        betNow.setText("Panos: " + uicBet.getBet(betting));
+        if (uicBet.getBet(betting) == 0) {
             startGame.setEnabled(false);
             betToZero.setEnabled(false);
         } else {
             startGame.setEnabled(true);
             betToZero.setEnabled(true);
         }
-        if (!uic.checkPlayerHasEnoughMoneyToBet(player, 1)) {
+        if (!uicConc.checkPlayerHasEnoughMoneyToBet(player, 1)) {
             betOne.setEnabled(false);
         } else {
             betOne.setEnabled(true);
         }
 
-        if (!uic.checkPlayerHasEnoughMoneyToBet(player, 5)) {
+        if (!uicConc.checkPlayerHasEnoughMoneyToBet(player, 5)) {
             betFive.setEnabled(false);
         } else {
             betFive.setEnabled(true);
@@ -387,7 +390,18 @@ public class GameGUI implements Runnable {
      * Method sets plMoney to show player's current money amount.
      */
     public void setPlayersMoneyTxt() {
-        plMoney.setText("Pelaajalla rahaa: " + uic.getPlayerMoney(player));
+        plMoney.setText("Pelaajalla rahaa: " + uicConc.getPlayerMoney(player));
+    }
+    
+    /**
+     * Method sets insurance JLabel to show if player has paid insurance for hand.
+     */
+    public void setPlayersInsuranceTxt() {
+        if (player.getInsurance()) {
+            insurance.setText("Vakuutus: Kyllä");
+        } else {
+            insurance.setText("Vakuutus: Ei");
+        }
     }
 
     /**
@@ -398,6 +412,7 @@ public class GameGUI implements Runnable {
         setPlayersMoneyTxt();
         setPlayerTxt();
         setDealerTxt();
+        setPlayersInsuranceTxt();
     }
 
     /**
@@ -420,7 +435,7 @@ public class GameGUI implements Runnable {
      * happened in game
      */
     public void askForNewGame(String result) {
-        if (!uic.checkPlayerHasEnoughMoneyToBet(player, 1)) {
+        if (!uicConc.checkPlayerHasEnoughMoneyToBet(player, 1)) {
             JOptionPane.showMessageDialog(frame, result + ". Rahanne loppuivat. Kiitos pelaamisesta!");
             System.exit(0);
         } else {
@@ -428,7 +443,7 @@ public class GameGUI implements Runnable {
             int response = JOptionPane.showConfirmDialog(null, result + ", haluatko uuden pelin?", "Confirm",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(frame, "Kiitos pelaamisesta! Rahaa teille jäi: " + uic.getPlayerMoney(player));
+                JOptionPane.showMessageDialog(frame, "Kiitos pelaamisesta! Rahaa teille jäi: " + uicConc.getPlayerMoney(player));
                 System.exit(0);
             } else if (response == JOptionPane.YES_OPTION) {
                 pk.removeAll();
@@ -437,13 +452,13 @@ public class GameGUI implements Runnable {
                 jk.removeAll();
                 jk.validate();
                 jk.repaint();
-                uic.setBetToZero(betting);
-                uic.startBetting(player, casino, dealer, betting);
+                uicBet.setBetToZero(betting);
+                uicDeal.startBetting(player, casino, dealer, betting);
                 setAllTexts();
                 enableOrDisableButtons(betButtons, true);
                 enableOrDisableButtons(gameButtons, false);
             } else if (response == JOptionPane.CLOSED_OPTION) {
-                JOptionPane.showMessageDialog(frame, "Kiitos pelaamisesta! Rahaa teille jäi: " + uic.getPlayerMoney(player));
+                JOptionPane.showMessageDialog(frame, "Kiitos pelaamisesta! Rahaa teille jäi: " + uicConc.getPlayerMoney(player));
                 System.exit(0);
             }
         }

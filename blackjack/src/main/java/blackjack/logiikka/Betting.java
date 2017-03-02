@@ -50,7 +50,7 @@ public class Betting {
      * Method sets insurance value depending on current bet value.
      */
     public void setInsurance() {
-        insurance = bet/2;
+        insurance = (double) bet/2;
     }
 
     /**

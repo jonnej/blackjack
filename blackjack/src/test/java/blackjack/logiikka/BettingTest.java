@@ -33,12 +33,20 @@ public class BettingTest {
     @Test
     public void constructorWorks() {
         assertEquals(0, bet.getBet());
+        assertEquals(0, bet.getInsurance(), 0.01);
     }
     
     @Test
     public void setBetWorks() {
         bet.setBet(5);
         assertEquals(5, bet.getBet());
+    }
+    
+    @Test
+    public void setInsuranceWorks() {
+        bet.setBet(5);
+        bet.setInsurance();
+        assertEquals(2.5, bet.getInsurance(), 0.01);
     }
     
     @Test
@@ -59,4 +67,19 @@ public class BettingTest {
         bet.betOneLess();
         assertEquals(0, bet.getBet());
     }
+    
+    @Test
+    public void betAmountWorks() {
+        bet.bet(5);
+        assertEquals(5, bet.getBet());
+    }
+    
+    @Test
+    public void doubleBetWorks() {
+        bet.bet(5);
+        bet.doubleBet();
+        assertEquals(10, bet.getBet());
+    }
+    
+    
 }
