@@ -1,5 +1,3 @@
-Sain viikko sitten gittini rikki ja en osannut vieläkään korjata sitä. Blackjackuusinversio.zip filussa on tämänhetkinen ohjelmakoodi. Pajaan ensiviikolla git ongelman kanssa
-
 Javalabra aiheenani on luoda Blackjack nimiseen peliin perustuva nettiversio.
 
 
