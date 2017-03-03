@@ -31,16 +31,14 @@ public class Deck {
      * Method adds 52 French playing cards to deck. Calling method again will
      * add new 52 cards. After that deck will consist of 104 cards and every
      * card will have one duplicate. Calling over and over again will do the
-     * same.
+     * same. Method also resized card images to wanted size.
      */
     public void createDeck() {
         for (String s : suit) {
             int value = 1;
             for (String n : name) {
                 String path = "src/main/resources/card-images/" + n + "_of_" + s + ".png";
-                
-//                java.net.URL url = getClass().getResource(path);
-                
+
                 ImageIcon ic = new ImageIcon(path);
                 ImageIcon reSized = resizeImageIcon(ic);
                 deck.add(new Card(n, s, value, reSized));
