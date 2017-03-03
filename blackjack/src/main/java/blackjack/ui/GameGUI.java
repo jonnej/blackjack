@@ -5,6 +5,9 @@
  */
 package blackjack.ui;
 
+import blackjack.guilogiikka.UicDealing;
+import blackjack.guilogiikka.UicConclusion;
+import blackjack.guilogiikka.UicBetting;
 import blackjack.data.Card;
 import blackjack.data.Hand;
 import blackjack.data.Player;

@@ -37,7 +37,7 @@ public class Deck {
         for (String s : suit) {
             int value = 1;
             for (String n : name) {
-                String path = "card-images/" + n + "_of_" + s + ".png";
+                String path = "src/main/resources/card-images/" + n + "_of_" + s + ".png";
                 
 //                java.net.URL url = getClass().getResource(path);
                 
