@@ -9,6 +9,7 @@ import blackjack.data.Card;
 import blackjack.data.Player;
 import blackjack.logiikka.Betting;
 import blackjack.logiikka.Dealer;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import org.junit.After;
@@ -42,7 +43,7 @@ public class UicDealingTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         uic = new UicDealing();
         p = new Player("Jonne", 100);
         c = new Player("Casino", 100);

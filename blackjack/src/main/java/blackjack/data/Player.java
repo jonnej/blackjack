@@ -39,11 +39,11 @@ public class Player {
     public Hand getHand() {
         return hand;
     }
-    
+
     public boolean getInsurance() {
         return insurance;
     }
-    
+
     public void setInsurance(boolean b) {
         insurance = b;
     }

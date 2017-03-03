@@ -15,8 +15,10 @@ import blackjack.logiikka.Betting;
  * @author joju
  */
 public class UicConclusion {
-
-    public void UicConclusion() {
+    /**
+     * Class Constructor.
+     */
+    public UicConclusion() {
 
     }
 
@@ -142,7 +144,7 @@ public class UicConclusion {
     /**
      * Method return given player's money amount.
      *
-     * @param p
+     * @param p player playing game
      * @see blackjack.data.Player#getMoney()
      * @return player's money total
      */

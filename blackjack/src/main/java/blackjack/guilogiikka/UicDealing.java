@@ -13,22 +13,30 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Class has methods for GUI
+ * Class has methods for GUI.
  *
  * @author joju
  */
 public class UicDealing {
 
     private int position;
-
+    
+    /**
+     * Class constructor initializes needed attributes. 
+     */
     public UicDealing() {
         position = 0;
     }
-
+    /**
+     * Methods sets position attribute to zero.
+     */
     public void setPositionZero() {
         position = 0;
     }
-
+    /**
+     * Method return position.
+     * @return current position
+     */
     public int getPosition() {
         return position;
     }
@@ -51,7 +59,7 @@ public class UicDealing {
     }
 
     /**
-     * Method adds card image to given JPanel
+     * Method adds card image to given JPanel.
      *
      * @param p given player
      * @param jp given player's JPanel
@@ -71,7 +79,8 @@ public class UicDealing {
      *
      * @param p player dealt card
      * @param d dealer object dealing cards
-     * @see blackjack.data.Player#addCard(blackjack.data.Card)
+     * @see blackjack.data.Player#getHand() 
+     * @see blackjack.data.Hand#addCard(Card)
      * @see blackjack.logiikka.Dealer#dealCard(int)
      * @see blackjack.data.Card#getImageIcon()
      * @return dealt card's image icon
@@ -87,7 +96,7 @@ public class UicDealing {
      * casino player objects.
      *
      * @param p given player
-     * @see blackjack.data.Player#handValue
+     * @see blackjack.data.Hand#getHandValue()
      * @return player's hand value
      */
     public int getHandValue(Player p) {
@@ -99,7 +108,7 @@ public class UicDealing {
      * value of 1 and 11.
      *
      * @param p given player
-     * @see blackjack.data.Player#getHighestValidHand()
+     * @see blackjack.data.Hand#getHighestValidHand()
      * @return player's biggest hand value
      */
     public int getBiggestValidHandValue(Player p) {
@@ -111,7 +120,9 @@ public class UicDealing {
      * when ace in hand and bigger value less than 22
      *
      * @param p given player
-     * @see blackjack.data.Player#handValue#handValueWithAce#
+     * @see blackjack.data.Player#getHand() 
+     * @see blackjack.data.Hand#getHandValue()
+     * @see blackjack.data.Hand#getHandValueWithAce()
      * @return hand value using string
      */
     public String printHandValue(Player p) {

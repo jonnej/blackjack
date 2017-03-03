@@ -12,10 +12,14 @@ import javax.swing.JOptionPane;
 
 /**
  * Class has methods for GUI betting buttons.
+ *
  * @author joju
  */
 public class UicBetting {
-
+    
+    /**
+     * Class Constructor.
+     */
     public UicBetting() {
 
     }
@@ -68,7 +72,7 @@ public class UicBetting {
     public void setBetToZero(Betting b) {
         b.setBet(0);
     }
-    
+
     /**
      * Method removes money from player and doubles bet after that.
      *
@@ -79,19 +83,24 @@ public class UicBetting {
         p.removeMoney(b.getBet());
         b.doubleBet();
     }
-    
-        public void askForInsurance(Player p, Betting b, JFrame frame) {
+    /**
+     * Method creates dialog in which player decides if player wants insurance.
+     * @param p player playing game
+     * @param b used betting object
+     * @param frame game JFrame
+     */
+    public void askForInsurance(Player p, Betting b, JFrame frame) {
         int response = JOptionPane.showConfirmDialog(null, "Haluatko vakuutuksen?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
-
+            return;
         } else if (response == JOptionPane.YES_OPTION) {
             b.setInsurance();
             p.removeMoney(b.getInsurance());
             p.setInsurance(true);
         } else if (response == JOptionPane.CLOSED_OPTION) {
-
+            return;
         }
     }
-    
+
 }

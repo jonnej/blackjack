@@ -1,6 +1,7 @@
 package blackjack.logiikka;
 
 import blackjack.data.*;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -34,8 +35,9 @@ public class Dealer {
 
     /**
      * Method calls method for deck, which adds 52 cards to dealers deck.
+     * @throws java.io.IOException if encountering problem
      */
-    public void createDeck() {
+    public void createDeck() throws IOException {
         deck.createDeck();
     }
 
@@ -52,7 +54,7 @@ public class Dealer {
      * Method returns wanted card from position i.
      *
      * @param i "top" card of deck
-     * @see blackjack.data.Deck.getCard(int)
+     * @see blackjack.data.Deck#getCard(int)
      * @return card from deck, position i
      */
     public Card dealCard(int i) {

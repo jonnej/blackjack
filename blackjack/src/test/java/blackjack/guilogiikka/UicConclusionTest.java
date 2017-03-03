@@ -9,6 +9,7 @@ import blackjack.data.Card;
 import blackjack.data.Player;
 import blackjack.logiikka.Betting;
 import blackjack.logiikka.Dealer;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +44,7 @@ public class UicConclusionTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         uic = new UicConclusion();
         p = new Player("Jonne", 100);
         c = new Player("Casino", 100);

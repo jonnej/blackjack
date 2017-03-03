@@ -17,6 +17,7 @@ public class Betting {
 
     private int bet;
     private double insurance;
+
     /**
      * Constructor initializes betting object and sets bet to zero.
      */
@@ -28,13 +29,14 @@ public class Betting {
     public int getBet() {
         return this.bet;
     }
-    
+
     public double getInsurance() {
         return this.insurance;
     }
 
     /**
-     * Method sets bet to given parameter if it is bigger than zero else sets it to zero.
+     * Method sets bet to given parameter if it is bigger than zero else sets it
+     * to zero.
      *
      * @param b wanted amount
      */
@@ -45,12 +47,12 @@ public class Betting {
             bet = 0;
         }
     }
-    
+
     /**
      * Method sets insurance value depending on current bet value.
      */
     public void setInsurance() {
-        insurance = (double) bet/2;
+        insurance = (double) bet / 2;
     }
 
     /**

@@ -16,6 +16,7 @@ import blackjack.logiikka.Dealer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -76,7 +77,7 @@ public class GameGUI implements Runnable {
      * @param name User gives name in WelcomeGUI window
      * @param money User gives money in WelcomeGUI window
      */
-    public GameGUI(String name, double money) {
+    public GameGUI(String name, double money){
 //        uic = new UiCommands();
         uicBet = new UicBetting();
         uicDeal = new UicDealing();
@@ -113,7 +114,13 @@ public class GameGUI implements Runnable {
         casino = new Player("casino", 1000);
         betting = new Betting();
         dealer = new Dealer("Jonne");
-        dealer.createDeck();
+       
+        try {
+            dealer.createDeck();
+        } catch (IOException ex) {
+            Logger.getLogger(GameGUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Can't create deck");
+        }
 
         betButtons = new JButton[]{betOne, betFive, betToZero};
         gameButtons = new JButton[]{hit, stay, dubbel};
@@ -123,7 +130,7 @@ public class GameGUI implements Runnable {
     /**
      * Method adds components to frame.
      *
-     * @param c
+     * @param c given container
      */
     public void initComponents(Container c) {
         c.setLayout(new GridLayout(4, 1));

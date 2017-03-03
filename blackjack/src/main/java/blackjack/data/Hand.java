@@ -8,7 +8,7 @@ package blackjack.data;
 import java.util.*;
 
 /**
- * Class is used to contain dealt cards for players
+ * Class is used to contain dealt cards for players.
  *
  * @author joju
  */

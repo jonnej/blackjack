@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
 import blackjack.data.*;
+import java.io.IOException;
 
 /**
  *
@@ -49,7 +50,7 @@ public class DealerTest {
 
     // testing that deck has 52 different cards
     @Test
-    public void createDeckWorks() {
+    public void createDeckWorks() throws IOException {
         d.createDeck();
         List<Card> list = d.getDeck().getDeckList();
         Set<Integer> set = new HashSet(list);
@@ -57,7 +58,7 @@ public class DealerTest {
     }
 
     @Test
-    public void dealCardWorks() {
+    public void dealCardWorks() throws IOException {
         d.createDeck();
         Deck deck = new Deck();
         deck.createDeck();

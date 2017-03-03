@@ -6,7 +6,13 @@
 package blackjack.data;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 import javax.swing.ImageIcon;
 
@@ -37,9 +43,16 @@ public class Deck {
         for (String s : suit) {
             int value = 1;
             for (String n : name) {
-                String path = "src/main/resources/card-images/" + n + "_of_" + s + ".png";
-//                java.net.URL imgURL = getClass().getResource(path);
-                ImageIcon ic = new ImageIcon(path);
+                String path = "card-images/" + n + "_of_" + s + ".png";
+                InputStream is = getClass().getClassLoader().getResourceAsStream(path);
+                BufferedImage bf = null;
+                try {
+                    bf = ImageIO.read(is);
+                } catch (IOException ex) {
+                    Logger.getLogger(Deck.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Can't create deck");
+                }
+                ImageIcon ic = new ImageIcon(bf);
                 ImageIcon reSized = resizeImageIcon(ic);
                 deck.add(new Card(n, s, value, reSized));
                 if (value < 10) {
@@ -48,11 +61,11 @@ public class Deck {
             }
         }
     }
-    
+
     /**
      * Method scales given card's image icon to better size.
      *
-     * @param c dealt card
+     * @param ic image icon to resize
      * @see blackjack.data.Card#getImageIcon()
      * @return card's image icon resized
      */
@@ -62,6 +75,7 @@ public class Deck {
         ic = new ImageIcon(newimg);  // transform it back
         return ic;
     }
+
     /**
      * Method gets wanted card from deck list using position.
      *
