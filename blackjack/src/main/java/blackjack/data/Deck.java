@@ -38,7 +38,7 @@ public class Deck {
             int value = 1;
             for (String n : name) {
                 String path = "src/main/resources/card-images/" + n + "_of_" + s + ".png";
-
+//                java.net.URL imgURL = getClass().getResource(path);
                 ImageIcon ic = new ImageIcon(path);
                 ImageIcon reSized = resizeImageIcon(ic);
                 deck.add(new Card(n, s, value, reSized));

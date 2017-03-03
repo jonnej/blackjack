@@ -60,30 +60,31 @@ public class PlayerTest {
 
     @Test
     public void addMoneyWorksWithPositiveDouble() {
-        double alku = 15.0;
-        p.addMoney(5.0);
-        assertEquals(alku + 5.0, p.getMoney(), 0.1);
+        double alku = 15;
+        p.addMoney(5);
+        assertEquals(alku + 5, p.getMoney(), 0.01);
     }
 
     @Test
     public void addMoneyWorksWithZero() {
-        double alku = 15.0;
-        p.addMoney(0.0);
-        assertEquals(alku, p.getMoney(), 0.1);
+        double alku = 15;
+        p.addMoney(0);
+        assertEquals(alku, p.getMoney(), 0.01);
     }
 
     @Test
     public void addMoneyWorksWithNegativeDouble() {
-        double alku = 15.0;
-        p.addMoney(-5.0);
-        assertEquals(alku, p.getMoney(), 0.1);
+        double alku = 15;
+        p.addMoney(-5);
+        assertEquals(alku, p.getMoney(), 0.01);
     }
 
     @Test
     public void removeMoneyWorksWithPositiveDoubleWhenEnoughMoney() {
         double alku = p.getMoney();
         p.removeMoney(5);
-        assertEquals(alku - 5, p.getMoney(), 0.01);
+        alku -= 5;
+        assertEquals(alku, p.getMoney(), 0.01);
     }
 
     @Test

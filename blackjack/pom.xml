@@ -39,10 +39,12 @@
                     <targetClasses>
                         <param>blackjack.logiikka.*</param>
                         <param>blackjack.data.*</param>
+                        <param>blackjack.guilogiikka.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>blackjack.logiikka.*</param>
                         <param>blackjack.data.*</param>
+                        <param>blackjack.guilogiikka.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

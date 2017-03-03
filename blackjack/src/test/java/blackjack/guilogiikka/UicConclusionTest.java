@@ -60,6 +60,11 @@ public class UicConclusionTest {
     public void playerHasEnoughMoneyWorksTrue() {
         assertTrue(uic.checkPlayerHasEnoughMoneyToBet(p, 10));
     }
+    
+    @Test
+    public void playerHasEnoughMoney() {
+        assertTrue(uic.checkPlayerHasEnoughMoneyToBet(p, 100));
+    }
 
     @Test
     public void playerHasEnoughMoneyWorksFalse() {
@@ -78,6 +83,14 @@ public class UicConclusionTest {
         p.getHand().addCard(new Card("8", "clubs", 8, new ImageIcon()));
         p.getHand().addCard(new Card("9", "clubs", 9, new ImageIcon()));
         p.getHand().addCard(new Card("7", "clubs", 7, new ImageIcon()));
+        assertFalse(uic.checkIfHandValueUnderTwentyTwo(p));
+    }
+    
+    @Test
+    public void handValueTotalTwentyTwo() {
+        p.getHand().addCard(new Card("7", "clubs", 7, new ImageIcon()));
+        p.getHand().addCard(new Card("7", "spades", 7, new ImageIcon()));
+        p.getHand().addCard(new Card("8", "clubs", 8, new ImageIcon()));
         assertFalse(uic.checkIfHandValueUnderTwentyTwo(p));
     }
 
@@ -100,6 +113,13 @@ public class UicConclusionTest {
         p.getHand().addCard(new Card("A", "clubs", 1, new ImageIcon()));
         c.getHand().addCard(new Card("5", "clubs", 5, new ImageIcon()));
         assertTrue(uic.playerWins(p, c));
+    }
+    
+    @Test
+    public void playerWinsDraw() {
+        p.getHand().addCard(new Card("5", "spades", 5, new ImageIcon()));
+        c.getHand().addCard(new Card("5", "clubs", 5, new ImageIcon()));
+        assertFalse(uic.playerWins(p, c));
     }
 
     @Test
