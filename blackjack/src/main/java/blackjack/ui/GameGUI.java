@@ -8,8 +8,6 @@ package blackjack.ui;
 import blackjack.guilogiikka.UicDealing;
 import blackjack.guilogiikka.UicConclusion;
 import blackjack.guilogiikka.UicBetting;
-import blackjack.data.Card;
-import blackjack.data.Hand;
 import blackjack.data.Player;
 import blackjack.logiikka.Betting;
 import blackjack.logiikka.Dealer;
@@ -307,7 +305,7 @@ public class GameGUI implements Runnable {
                 jk.validate();
                 startGame.setEnabled(false);
                 
-                if (uicDeal.getBiggestValidHandValue(casino) == 11) {
+                if (uicDeal.getBiggestValidHandValue(casino) == 11 && player.getMoney() >= (double) betting.getBet() / 2) {
                     uicBet.askForInsurance(player, betting, frame);
                 }
 
