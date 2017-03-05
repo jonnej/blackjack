@@ -70,7 +70,7 @@ public class WelcomeGUI implements Runnable {
 
         wlcText.setFont(new Font("default", Font.BOLD, 16));
         wlcText.setText("Tervetuloa pelaamaan blackjackia! \n Syöttäkää nimenne ja rahamäärä (Max 999). \n Tämän jälkeen painakaa OK");
-        wlcText.setBounds(135, 50, 300, 125);
+        wlcText.setBounds(135, 50, 350, 125);
         wlcText.setEnabled(false);
         c.add(wlcText);
 
