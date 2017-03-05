@@ -18,3 +18,4 @@ Päivä | Tunnit | Kuvaus
 01.03.2017 | 3.5h | Luotiin uusi luokka Hand, aloitettiin Vakuutus toiminnallisuuden tekoa.
 02.03.2017 | 3.0h | Jaettiin UiCommands-luokka pienempiin luokkiin. Toteutettiin vakuutus toiminnallisuus
 03.03.2017 | 3.5h | Dokumentointia, testejä, javadoccia
+05.03.2017 | 1.5h | Päivitetty luokkakaavio, korjattiin vakuutusbugi, loppuvalmistelut
