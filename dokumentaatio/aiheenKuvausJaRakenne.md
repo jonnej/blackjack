@@ -10,7 +10,7 @@ pelipaikkoja.
 Rakenne
 -------
 
-![Määrittelyvaiheen luokkakaavio](kuvat/luokkaavio1002.png)
+![Määrittelyvaiheen luokkakaavio](kuvat/luokkaavioX.png)
 
 
 Sekvenssikaavioita
